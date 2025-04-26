@@ -105,26 +105,36 @@ Exercício 2: Consultando Dados
 
 Clientes em São Paulo: Encontre todos os clientes que estão localizados na cidade de "São Paulo". 
 
+db.client.find({city: "São Paulo"})
 
 
 
 Processos com Valor Superior a: Liste todos os processos na coleção client_processes cujo valor (value) seja maior que 2000.
 
+db.client_processes.find({value: {$gt:30}})
 
 
 
 Eventos com Proposta Pendente ou Aceita: Encontre todos os eventos onde o proposal_status seja "pending accepted" ou "accepted".
 
+db.events.find({proposal_status: {$in: ["pending accepted", "accepted"]}})
 
 
 
 Clientes Corporativos: Liste todos os clientes onde o campo enterprise não seja null. Exiba apenas os campos full_name e cnpj_enterprise.
+
+db.client.find({ enterprise: { $ne: null } },{ full_name: 1, cnpj_enterprise: 1, _id: 0 })
 
 
 
 
 Processos de Cobrança: Encontre todos os processos cuja class seja "Cobrança" e ordene-os por valor em ordem decrescente.
 
+db.client_processes.find({class: "Cobrança"}).sort({valor: -1})
+
+
+
+------------------------------------------------------------------------------------
 
 
 Exercício 3: Atualizando Dados
