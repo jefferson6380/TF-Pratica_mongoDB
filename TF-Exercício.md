@@ -143,6 +143,8 @@ Exercício 3: Atualizando Dados
 
 Atualizar Status do Processo: Altere o status do processo com number "PROC-2023-001" para "concluído".
 
+db.client_processes.updateOne({number: 'PROC-2023-001'}, {$set: {status: 'Concluido'}});
+
 
 
 
@@ -150,8 +152,16 @@ Adicionar Observação ao Evento: Adicione o campo note_doc com o valor "OBS-MS-
 
 
 
+db.events.updateOne({client_id: "id_do_cliente_maria_silva"}, {$set: {note_doc: "OBS-MS-001.TXT"}})
+
+
 
 Incrementar Quantidade de Limpezas: Aumente em 1 a amount_of_cleaning para o evento da Empresa Soluções Ltda.
+
+db.events.updateOne({client_id: "id_do_cliente_empresa_solucoes" }, {$inc: { amount_of_cleaning: 1 } });
+
+
+----------------------------------------------------------------------------------------------------
 
 
 
@@ -166,6 +176,10 @@ Remover Processo: Remova o processo com number "PROC-2023-002".
 
 Remover Clientes sem CNPJ: Remova todos os clientes onde o campo cnpj_enterprise seja null.
 
+
+
+
+-------------------------------------------------------------------------------------------------
 
 
 Exercício 5: Criando Índices
