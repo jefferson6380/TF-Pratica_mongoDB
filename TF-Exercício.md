@@ -171,12 +171,12 @@ db.events.updateOne({client_id: "id_do_cliente_empresa_solucoes" }, {$inc: { amo
 
 * ### Remover Processo: Remova o processo com number "PROC-2023-002".
 
-
+db.client_processes.deleteOne({number: "PROC-2023-001"})
 
 
 * ### Remover Clientes sem CNPJ: Remova todos os clientes onde o campo cnpj_enterprise seja null.
 
-
+db.client.deleteMany({dnpj_enterprise: null})
 
 
 -------------------------------------------------------------------------------------------------
@@ -188,10 +188,12 @@ db.events.updateOne({client_id: "id_do_cliente_empresa_solucoes" }, {$inc: { amo
 
 * ### Índice no Nome do Cliente: Crie um índice no campo full_name da coleção client.
 
+db.client.createIndex({full_name: 1})
 
 
 
 * ### Visualizar Índices: Liste todos os índices da coleção client.
 
+db.client.getIndexes()
 
 * substitua os placeholders de IDs ("id_do_cliente_...", "user_id_...") pelos IDs reais gerados pelo MongoDB ao inserir os documentos.
