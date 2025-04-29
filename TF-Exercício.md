@@ -111,7 +111,7 @@ db.client.find({city: "São Paulo"})
 
 * ### Processos com Valor Superior a: Liste todos os processos na coleção client_processes cujo valor (value) seja maior que 2000.
 
-db.client_processes.find({value: {$gt:30}})
+db.client_processes.find({value: {$gt:2000}})
 
 
 
