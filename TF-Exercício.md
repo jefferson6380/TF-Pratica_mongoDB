@@ -1,6 +1,6 @@
-Exercício 1: Inserindo Dados
+# Exercício 1: Inserindo Dados
 
-Clientes: Insira os seguintes clientes na coleção client:
+## Clientes: Insira os seguintes clientes na coleção client:
 
 db.client.insertMany([{
   "full_name": "Maria Silva",
@@ -34,7 +34,7 @@ db.client.insertMany([{
 
 
 
-Processos: Insira os seguintes processos para os clientes na coleção client_processes:
+## Processos: Insira os seguintes processos para os clientes na coleção client_processes:
 
 db.client_processes.insertMany([{
   "client_id": "id_do_cliente_maria_silva",
@@ -58,7 +58,7 @@ db.client_processes.insertMany([{
 
 
 
-Eventos: Insira os seguintes eventos na coleção events:
+## Eventos: Insira os seguintes eventos na coleção events:
 
 db.events.insertMany([{
   "client_id": "id_do_cliente_maria_silva",
@@ -101,34 +101,34 @@ db.events.insertMany([{
 
 ---------------------------------------------------------------------------------------------
 
-Exercício 2: Consultando Dados
+# Exercício 2: Consultando Dados
 
-Clientes em São Paulo: Encontre todos os clientes que estão localizados na cidade de "São Paulo". 
+## Clientes em São Paulo: Encontre todos os clientes que estão localizados na cidade de "São Paulo". 
 
 db.client.find({city: "São Paulo"})
 
 
 
-Processos com Valor Superior a: Liste todos os processos na coleção client_processes cujo valor (value) seja maior que 2000.
+## Processos com Valor Superior a: Liste todos os processos na coleção client_processes cujo valor (value) seja maior que 2000.
 
 db.client_processes.find({value: {$gt:30}})
 
 
 
-Eventos com Proposta Pendente ou Aceita: Encontre todos os eventos onde o proposal_status seja "pending accepted" ou "accepted".
+## Eventos com Proposta Pendente ou Aceita: Encontre todos os eventos onde o proposal_status seja "pending accepted" ou "accepted".
 
 db.events.find({proposal_status: {$in: ["pending accepted", "accepted"]}})
 
 
 
-Clientes Corporativos: Liste todos os clientes onde o campo enterprise não seja null. Exiba apenas os campos full_name e cnpj_enterprise.
+## Clientes Corporativos: Liste todos os clientes onde o campo enterprise não seja null. Exiba apenas os campos full_name e cnpj_enterprise.
 
 db.client.find({ enterprise: { $ne: null } },{ full_name: 1, cnpj_enterprise: 1, _id: 0 })
 
 
 
 
-Processos de Cobrança: Encontre todos os processos cuja class seja "Cobrança" e ordene-os por valor em ordem decrescente.
+## Processos de Cobrança: Encontre todos os processos cuja class seja "Cobrança" e ordene-os por valor em ordem decrescente.
 
 db.client_processes.find({class: "Cobrança"}).sort({valor: -1})
 
@@ -137,18 +137,18 @@ db.client_processes.find({class: "Cobrança"}).sort({valor: -1})
 ------------------------------------------------------------------------------------
 
 
-Exercício 3: Atualizando Dados
+# Exercício 3: Atualizando Dados
 
 
 
-Atualizar Status do Processo: Altere o status do processo com number "PROC-2023-001" para "concluído".
+## Atualizar Status do Processo: Altere o status do processo com number "PROC-2023-001" para "concluído".
 
 db.client_processes.updateOne({number: 'PROC-2023-001'}, {$set: {status: 'Concluido'}});
 
 
 
 
-Adicionar Observação ao Evento: Adicione o campo note_doc com o valor "OBS-MS-001.txt" ao evento de Maria Silva.
+## Adicionar Observação ao Evento: Adicione o campo note_doc com o valor "OBS-MS-001.txt" ao evento de Maria Silva.
 
 
 
@@ -156,7 +156,7 @@ db.events.updateOne({client_id: "id_do_cliente_maria_silva"}, {$set: {note_doc: 
 
 
 
-Incrementar Quantidade de Limpezas: Aumente em 1 a amount_of_cleaning para o evento da Empresa Soluções Ltda.
+## Incrementar Quantidade de Limpezas: Aumente em 1 a amount_of_cleaning para o evento da Empresa Soluções Ltda.
 
 db.events.updateOne({client_id: "id_do_cliente_empresa_solucoes" }, {$inc: { amount_of_cleaning: 1 } });
 
@@ -165,16 +165,16 @@ db.events.updateOne({client_id: "id_do_cliente_empresa_solucoes" }, {$inc: { amo
 
 
 
-Exercício 4: Excluindo Dados
+# Exercício 4: Excluindo Dados
 
 
 
-Remover Processo: Remova o processo com number "PROC-2023-002".
+## Remover Processo: Remova o processo com number "PROC-2023-002".
 
 
 
 
-Remover Clientes sem CNPJ: Remova todos os clientes onde o campo cnpj_enterprise seja null.
+## Remover Clientes sem CNPJ: Remova todos os clientes onde o campo cnpj_enterprise seja null.
 
 
 
@@ -182,24 +182,16 @@ Remover Clientes sem CNPJ: Remova todos os clientes onde o campo cnpj_enterprise
 -------------------------------------------------------------------------------------------------
 
 
-Exercício 5: Criando Índices
+# Exercício 5: Criando Índices
 
 
 
-Índice no Nome do Cliente: Crie um índice no campo full_name da coleção client.
+ Índice no Nome do Cliente: Crie um índice no campo full_name da coleção client.
 
 
 
 
-Visualizar Índices: Liste todos os índices da coleção client.
+ Visualizar Índices: Liste todos os índices da coleção client.
 
 
-
-Lembre-se:
-
-
-Substitua os placeholders de IDs ("id_do_cliente_...", "user_id_...") pelos IDs reais gerados pelo MongoDB ao inserir os documentos.
-
-Preste atenção à sintaxe dos comandos e aos operadores utilizados.
-
-Use o comando db.<colecao>.find() sem argumentos para verificar os dados após cada operação de inserção, atualização ou exclusão.
+* substitua os placeholders de IDs ("id_do_cliente_...", "user_id_...") pelos IDs reais gerados pelo MongoDB ao inserir os documentos.
